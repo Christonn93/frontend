@@ -13,9 +13,7 @@ Style list:
 3. Feedback handling
    
 4. Components / Classes
-    4.1 - Skipping nav for user accessibility
-    4.2 - Container's
-    4.3 - Image carousel
+
 5. 
 
 6. Media Queries 
@@ -29,16 +27,17 @@ Style list:
 :root {
 
     /* -- Site color -- */
-    --clr-main-bg: #f0eff6;
-    /* --clr-main-bg: #334558; */
-    --clr-sec-bg: #1d1d2a;
-    /* --clr-sec-bg: #face99; */
+    /* --clr-main-bg: #f0eff6; */
+    --clr-main-bg: #334558;
+    /* --clr-sec-bg: #1d1d2a; */
+    --clr-sec-bg: #face99;
 
-    --clr-main: #65677c;
-    /* --clr-main: #c15024; */
-    --clr-sec: #bac1d9;
-    /* --clr-sec: #322314; */
+    /* --clr-main: #65677c; */
+    --clr-main: #c15024;
+    /* --clr-sec: #bac1d9; */
+    --clr-sec: #322314;
 
+    --clr-outline: #000;
     --clr-border: ;
     --clr-border-hover: ;
 
@@ -94,7 +93,54 @@ Style list:
 *::after {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    text-decoration: none;
 }
+
+/* ======================
+    2. TYPOGRAPHY
+====================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+h1 {
+    font-family: var(--ff-header);
+    font-size: var(--clamp-large);
+}
+
+h2 {
+    font-family: var(--ff-header);
+    font-size: var(--clamp-medium);
+}
+
+h3,
+h4 {
+    font-family: var(--ff-header);
+    font-size: var(--clamp-default);
+}
+
+p {
+  font-family: var(--ff-body);
+  font-size: var(--clamp-default);
+
+  color: white;
+}
+
+a {
+  font-size: var(--clamp-default);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ======================
+    3. BASE HTML ELEMENTS
+====================== */
 
 body {
     margin: 0;
@@ -103,6 +149,8 @@ body {
     font-family: var(--ff-body);
     font-size: var(--clamp-default);
 }
+
+/* === List items === */
 
 ul {
   display: flex;
@@ -114,6 +162,10 @@ ul {
   list-style: none;
 }
 
+/* ======================
+    4. CLASSES / COMPONENTS
+====================== */
+
 .main-app {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -123,15 +175,28 @@ ul {
   margin: 0;
   padding: 0;
 
-  background-color: var(--clr-main-bg);
-
   font-family: var(--ff-body);
   font-size: var(--clamp-default);
-  color: var();
+  color: white;
 }
+
+/* === Header classes === */
+
+.site-header {
+  background-color: #1d1d2a;
+
+  padding: var(--padding);
+}
+
+.site-header * {
+  color: white;
+}
+
+/* === Navigation classes === */
 
 .site-navigation {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   gap: 15px;
@@ -144,32 +209,42 @@ ul {
   display: flex;
   align-items: center;
   padding: 0 .25rem;
-  
+  border: 1px solid transparent;
+
   height: 100%;
 
   font-family: var(--ff-btn-link);
   font-size: var(--clamp-default);
-  color: black;
   text-decoration: none;
 }
 
 .site-navigation li.active {
   background-color: #bac1d9;
+  border: 1px solid inherit;
+  border-radius: var(--border-radius);
 }
 
 .site-navigation li:hover {
-background-color: #0099cc;
+background-color: #424546;
+border: 1px solid inherit;
+border-radius: var(--border-radius);
 }
+
+/* === Branding classes === */
 
 .brand {
   font-size: var(--clamp-large);
   cursor: pointer;
 }
 
+/* === Container classes === */
+
 .content-container {
   display: flex;
   gap: 15px;
-  margin: var(--margin);
+  padding: var(--padding);
+
+  background-color: var(--clr-sec-bg);
 }
 
 .container {
@@ -178,7 +253,7 @@ background-color: #0099cc;
   gap: 15px;
   flex-wrap: wrap;
 
-  background-color: var(--clr-sec-bg);
+  background-color: var();
   color: white;
   padding: var(--padding);
 
@@ -186,16 +261,203 @@ background-color: #0099cc;
   width: var(--full);
 }
 
+/* === Card classes === */
+
+.card-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
+.card-container {
+  min-width: 100%;
+  max-width: 350px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+  padding: var(--padding);
+
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+  
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  background-color: #65677c;
+  color: white;
+}
+
+.image-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* === Button classes === */
+
+button {
+  border: 0;
+  background-color: transparent;
+  max-height: fit-content;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  padding: 10px 20px;
+  margin: 0;
+
+  border-radius: 0.5rem;
+  outline: .5px solid var(--clr-outline);
+  outline-offset: -1px;
+  cursor: pointer;
+
+  font-family: var(--ff-link);
+  font-size: var(--clamp-small);
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.15px;
+
+  background-color: transparent;
+
+  transition: background 250ms ease-in-out,
+      transform 150ms ease;
+}
+
+.btn:hover {
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+  outline: .5px solid var(--clr-outline);
+  outline-offset: -1px;
+  color: black;
+}
+
+.btn:focus {
+  outline: .5px solid var(--clr-main);
+  outline-offset: -1px;
+  color: black;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+/* === Form classes === */
+.form-container {
+  width: 100%;
+  max-width: 550px;
+
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 100%;
+  max-width: 550px;
+
+  margin: 0 auto;
+}
+
+form * {
+  display: flex;
+  flex-direction: column;
+  column-gap: 5px;
+  padding: 15px;
+}
+
+
+/* === Footer classes  === */
+
 .site-footer {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   
   justify-content: space-around;
   align-items: center;
   
   gap: 15px;
-  padding: 0 1rem;
+  padding: 1rem;
 
   font-family: var(--ff-btn-link);
   font-size: var(--clamp-default);
+
+  background-color: #1d1d2a;
 }
+
+.footer-box {
+  display: flex;
+  gap: 15px;
+  
+  justify-content: space-evenly;
+}
+
+.footer-box p {
+  color: white;
+}
+
+.footer-list {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-list li a {
+  color: white;
+}
+
+.footer-list li a:hover {
+  color: red;
+}
+
+
+/* ======================
+    5. FEEDBACK HANDLING
+====================== */
+
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 1;
+  align-content: center;
+
+  margin: 10px auto;
+  padding: var(--padding);
+
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5),
+  0 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.alert {
+  border: var(--prim-bor);
+  background-color: var(--clr-prim);
+}
+
+.warning {
+  border: var(--warn-bor);
+  background-color: var(--clr-warn);
+}
+
+.error {
+  border: var(--err-bor);
+  background-color: var(--clr-err);
+}
+
+.success {
+  border: var(--ok-bor);
+  background-color: var(--clr-ok);
+}
+
+/* ======================
+    6. 
+====================== */

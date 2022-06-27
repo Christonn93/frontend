@@ -1,8 +1,13 @@
+import ContactForm from "../components/utils/contact_form";
+
 function Contact() {
  return (
   <div className="content-container contact">
    <div className="container">
-    <h2>Contact</h2>
+    <div className="form-container">
+    <h1>Contact form</h1>
+    <ContactForm />
+    </div>
    </div>
   </div>
  );

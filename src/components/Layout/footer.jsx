@@ -5,8 +5,12 @@ import List from "../utils/list_component";
 function Footer() {
  return (
   <div className="site-footer">
-    <p>This is the page footer</p>
+    <div className="footer-box">
     <List />
+    </div>
+    <div className="footer-box">
+      <p>Copyright Christopher Tønnesland</p>
+    </div>
   </div>
  );
 }
