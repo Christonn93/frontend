@@ -16,12 +16,12 @@ function Nav() {
      </Link>
     </li>
     <li>
-     <Link to="/pages/about" className="navigation-link">
+     <Link to="/about" className="navigation-link">
       About
      </Link>
     </li>
     <li>
-     <Link to="/pages/contact" className="navigation-link">
+     <Link to="/contact" className="navigation-link">
       Contact
      </Link>
     </li>
