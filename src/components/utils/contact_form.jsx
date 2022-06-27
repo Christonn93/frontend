@@ -20,7 +20,7 @@ const ContactForm = () => {
  }
 
  return (
-  <form action={form_endpoint} onSubmit={handleSubmit} method="POST" target="_blank">
+  <form action={form_endpoint} onSubmit={handleSubmit} method="POST">
   <label for="name">Your name
     <input type="text" placeholder="Your name" name="name" required />
    </label>
